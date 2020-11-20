@@ -3107,3 +3107,64 @@ Z---E001     Z  1 100 0000 000 0000     LAST DECK NUMBER CALLED FOR
 =055E038          050 Q  8 050 Q  9
 =055E040     *  1 020 ---- 001 *  3
 =055E050          024 U  5 052 *  2
+
+=055E060     *  2 020 ---- 001 *  4
+=055E070          020 $  0 010 = 47     CHANGE STATE TO L6 WHILE DRAINING
+=055E080              L  6     L  6
+=055E090          010 *  9
+=055E100     *  3 020 $  0 010 =  8     ASSIGN INPUT BUFFER
+=055E110          002 *  4 010 $  1     TO *4 IF ASSIGNED
+=055E120          020 $  0 010 = 47     CHANGE STATE TO L7 IF NO BUFFER AVAILABL
+=055E130              L  7     L  7
+=055E140          010 *  9
+=055E150     *  4 020 H 12 024 K 36     OK TO SWITCH
+=055E160          142 K 36 010 $  1     CL+SU
+=055E170          020 $  0 010 = 47     CHANGE STATE TO L10 GREEN
+=055E180              L 10     L 10
+=055E190     *  9 010 ----         ,
+=056E000+    = 56 010 $  0              ERASE STEP A/C H21-H26
+=056E010          024 K  2 052 *  9
+=056E020          020 $  0 010 = 57     STEP LOOKS JUST LIKE FORM HERE
+=056E030          020 H 22 056 *  1
+=056E040     *  1 020 K  6 124 ----
+=056E050          025 K  1 002 *  9     EXIT UNLESS PART NOW EMPTY
+=056E060          020 H 21 056 *  2
+=056E070     *  2 020 H 23 056 ----
+=056E080          020 H 22 071   61
+=056E090          020 $  0 010 = 28     ERASE LEFT LINKED LIST (ONE ITEM HERE)
+=056E100     *  9 010 ----         ,
+=057E000+    = 57 010 $  0              ERASE PART A/C H24-H26
+=057E010          024 K  2 052 *  9
+=057E020          020 H 24 052 *  1
+=057E030          020 H 26 010 $  1
+=057E040     *  1 052 ---- 010 $  1
+=057E050          020 H 25 071   19
+=057E060          020 $  0 010 = 29     ERASE RIGHT LINKED LIST A/C MQ
+=057E070     *  9 010 ----         ,
+=058E000+    = 58 010 $  0              RELEASE CURRENT BUFFER FOR STN
+=058E010          024 K  2 052 *  9       SERVICES L7 WITH FREE BUFFER AND
+=058E020          020 H 12 050 * 92       LEAVES NEXT BUFFER OR -1 IN ACC AND H1
+=058E030          024 U  1 052 *  1
+=058E040          056 *  8 010 $  1
+=058E050     *  1 020 ---- 050 H 13
+=058E055          002 $  1 010 *  9
+=058E060          024 U  5 056 *  2
+=058E070     *  2 056 *  3 004 ----     PICK UP NEXT BUFFER (IF ANY)
+=058E080     *  3 020 K  4 050 ----     SET SUCCESSOR OF OLD BUFFER TO -1
+=058E090          060 * 93 050 T  0
+=058E100          020 H 12 056 T  0
+=058E110          020 T  0 142 K 16     SET BUFFER BITS IN SCR FOR NEW BUFFER
+=058E120          020 * 91 010 $  1     FIND TAIL OF H10 LIST
+=058E130     *  4 052 *  5 056 *  6
+=058E140     *  5 020 ---- 001 *  6
+=058E150          024 U  5 010 *  4
+=058E160     *  6 020 H 13 050 ----     PUT OLD BUFFER ON END OF H10 LIST
+=058E170          020 L  7 005 *  7     SERVICE L7
+=058E180          050 H 12 010 $  1
+=058E190          020 $  0 010 =  8     ASSIGN BUFFER
+=058E200          020 $  0 010 = 47     CHANGE STATE TO L10
+=058E210              L 10     L 10
+=058E220          020 H 12 024 K 36     CL+SU
+=058E230          142 K 36 020 * 92
+=058E240     *  7 050 H 12 020 * 93     RESTORE STN CONTEXT
+=058E250     *  8 050 H 13 050 ----     LEAVE NEXT BUFFER OR -1 IN ACC AND H13.
