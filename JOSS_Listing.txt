@@ -3046,3 +3046,64 @@ Z---E001     Z  1 100 0000 000 0000     LAST DECK NUMBER CALLED FOR
 =051E150          002 *  1 020 H 22
 =051E160          071   21 124 K  6
 =051E170          050 H 25 020 H 23
+
+=051E180          050 H 26 010 $  1
+=051E190     *  5 020 H 25 050 H 24
+=051E200          020 H 26 050 H 25
+=051E210          052 *  6 024 K  2
+=051E220          052 *  7 010 $  1
+=051E230     *  6 020 ---- 050 H 26
+=051E240          001 *  9 020 P 21     EXIT MINUS IF CAN'T FIND
+=051E250     *  7 025 ---- 001 *  9     EXIT MINUS IF CAN'T FIND
+=051E260          025 K  1 002 *  5
+=051E270          020 H 26 010 $  1     OUTPUT LOCATOR IN ACC
+=051E280     *  9 010 ----              H21-H26 HOLD USEFUL INFO ON EXIT
+=051E290     * 90              N  8
+=051E300     * 91              Q 10,
+=052E000+    = 52 010 $  0              FIND FORM (P22)
+=052E010          024 K  2 052 *  9
+=052E020          020 * 90 050 H 25
+=052E030          020 Q 11 050 H 26
+=052E040     *  1 020 H 25 050 H 24
+=052E050          020 H 26 050 H 25
+=052E060          052 *  2 024 K  2
+=052E070          052 *  3 010 $  1
+=052E080     *  2 020 ---- 050 H 26
+=052E090          001 *  9 020 P 22     EXIT MINUS IF CAN'T FIND
+=052E100     *  3 025 ---- 001 *  9
+=052E110          025 K  1 002 *  1
+=052E120          020 H 26 010 $  1     OUTPUT LOCATOR IN ACC AND H26
+=052E130     *  9 010 ----              H24 LOCATES PREDECESSOR ON EXIT.
+=052E140     * 90     Q 11         ,
+=053E000+    = 53 010 $  0              KICK OUT CURRENT PROGRAM (IF ANY)    TEMP
+=053E010          024 K  2 052 *  9
+=053E020          020 H  7 001 *  9
+=053E030          024 U  2 052 *  1
+=053E040     *  1 020 ---- 024 U  7
+=053E050          052 *  2 010 $  1
+=053E060     *  2 004 ---- 111,7000     TEMPORARILY 512 WORDS
+=053E070          020 K  4 050 H  7
+=053E080     *  9 010 ----         ,
+=054E000+    = 54 010 $  0              BRING IN PROGRAM (IF ANY) A/C STN    TEMP
+=054E010          024 K  2 052 *  9
+=054E020          020 $  0 010 = 53     KICK OUT CURRENT PROGRAM IF ANY
+=054E030          020 H 12 024 U  2
+=054E040          052 *  1 010 $  1
+=054E050     *  1 020 ---- 001 *  9
+=054E060          024 U  7 052 *  2
+=054E070     *  2 004 ---- 110,7000     TEMPORARILY 512 WORDS
+=054E080          020 H 12 050 H  7
+=054E090          020 $  0 010 =  0
+=054E100          050 H  8 010 $  1     SET START TIME FOR SHOT
+=054E110     *  9 010 ----         ,
+=055E000+    = 55 010 $  0              SWITCH TO USER (CL+SU)
+=055E010          024 K  2 052 *  9     (ASSUMES SUBSTATE OF L10 ALREADY IN P13)
+=055E015          020 K  4 050 P 16     CLEAR P16 BEFORE SWITCHING
+=055E020          050 P 15 020 H 12     ALSO CLEAR P15
+=055E030          024 U  1 052 *  1
+=055E032          020 Q  8 001 *  1     JUMP IF Q8 MINUS
+=055E034          050 Q 12 020 Q  9     HIDE Q8-Q9
+=055E036          050 Q 13 020 K  4
+=055E038          050 Q  8 050 Q  9
+=055E040     *  1 020 ---- 001 *  3
+=055E050          024 U  5 052 *  2
