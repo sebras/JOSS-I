@@ -2802,3 +2802,64 @@ Z---E001     Z  1 100 0000 000 0000     LAST DECK NUMBER CALLED FOR
 =035E826          020 $  0 010 = 34     IF B NEGATIVE, COMPUTE 1/A
 =035E828     * 27 020 Q  3 050 * 91     STORE MULTIPLIER
 =035E830          020 * 80 072    1     TEST SUCCESSIVE DIGITS OF B, IF ONE
+
+=035E832          050 * 80 061 T  0     MULTIPLY CURRENT PRODUCT BY CURRENT
+=035E834          002 * 28 010 $  1     POWER OF A*N OR (1/A)*N
+=035E836          020 $  0 010 = 12     PUSH A*N
+=035E838          020 * 88 050 Q  3
+=035E840          020 $  0 010 = 33     MULTIPLY
+=035E842          020 Q  3 050 * 88
+=035E844     * 28 023 * 80 002 * 20     IF B=0, DONE, OTHERWISE
+=035E846          020 * 91 050 Q  3     COMPUTE NEXT POWER
+=035E848          020 $  0 010 = 12     PUSH A*N
+=035E850          020 $  0 010 = 33     COMPUTE A*(2N)
+=035E852          010 * 27
+=035E870     * 80                       B IF IT IS AN INTEGER
+=035E875     * 81                       FLAG 1
+=035E880     * 82                       FLAG 2
+=035E885     * 83                       FLAG 3
+=035E890     * 84                       A PACKED -- THEN ABSOLUTE A PACKED
+=035E895     * 85                       B PACKED -- THEN ABSOLUTE B PACKED
+=035E900     * 86                       SFX B
+=035E905     * 87                       SIGN B
+=035E910     * 88                       COEF B, REPLACED BY 10*8 IN * 29
+=035E915     * 89                       SFX A
+=035E920     * 90                       SIGN A
+=035E925     * 91                       COEF A, REPLACED BY A*N IN * 27
+=035E935     * 93 077,6356,326,2400     1/2(10*8)
+=035E940     * 94                30,
+=036E000+    = 36 010 $  0              CONVERT H20 INTEGER FOR OUTPUT FROM S
+=036E010          024 K  2 052 *  1       020 $  0 010 = 36
+=036E020          024 K  2 052 *  9              K        N
+=036E030     *  1 020 ---- 024 * 90       WHERE K=OPTION AND N=NBR OF DIGITS
+=036E040          052 * 10 124 K  5       K=1 SKIP LEADING ZEROS
+=036E050          024 I  1 040 T  0       K=2 SPACE FOR LEADING ZEROS
+=036E060          120    0 050 *  3       K=3 FORCE LEADING ZEROS
+=036E070     * 10 010 ----                K=4 FORCE LEADING, SKIP TRAILING ZEROS
+=036E080     * 11 020 * 91 014 *  2
+=036E090     * 12 020 * 92 014 *  2
+=036E100     * 13 020 *  6 014 *  2
+=036E110     * 14 020 * 94 050 *  3
+=036E120     *  2 020 *  6 050 *  5
+=036E130     *  3 --- ---- --- ----
+=036E140          020 T  0 024 J 11
+=036E150          056 *  4 120    0
+=036E160     *  4 004 H 20 004 ----
+=036E170          050 H 20 063 T  1
+=036E180          002 *  5 020 *  6
+=036E190          050 *  5 010 * 20
+=036E200     *  5 --- ---- --- ----
+=036E210     *  6 004 A 48 010 * 20
+=036E220     *  7 004 A 14 010 * 20
+=036E230     * 20 020 P 12 024 K  3
+=036E240          050 P 12 056 * 21
+=036E250     * 21 060 P 11 050 ----
+=036E260     * 22 020 T  0 025 I  1
+=036E270          050 T  0 002 *  3
+=036E280     *  9 010 ----              EXIT
+=036E290     * 90     * 10
+=036E300     * 91 023 T  0 001 * 22
+=036E310     * 92 023 T  0 001 *  7
+=036E320     * 94 023 H 20 002 *  9,
+=037E000+    = 37 010 $  0              SIMPLE-DIRECT TESTS
+=037E010          024 K  2 052 *  9
