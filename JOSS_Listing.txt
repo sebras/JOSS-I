@@ -1216,3 +1216,64 @@ G014E635          020 $  0 010 = 50     FIND PART
 G014E640          020 $  0 010 E 17     ERROR IF CAN'T
 G014E645          020 H 23 050 * 91
 G014E650     * 66 020 * 91 052 *  6
+
+G014E655          124 K  6 025 K  1
+G014E660          001 * 68 010 $  1
+G014E665     * 67 004 ---- 060 * 91
+G014E670          020 $  0 010 = 29
+G014E675          010 * 66
+G014E680     * 68 004 H 22 075   21
+G014E685          020 $  0 010 = 28
+G014E690          020 H 21 056 * 69
+G014E695     * 69 020 H 23 056 ----
+G014E700          010 X  5              EXIT
+G014E705     * 70 020 $  0 010 = 21     EVALUATE STEP NUMBER
+G014E710          020 $  0 010 = 45     VALIDATE STEP NUMBER
+G014E715          020 $  0 010 * 50     VERIFY TERMINAL
+G014E720          020 Q  3 050 P 21
+G014E725          020 $  0 010 = 13     POP Q3
+G014E730          020 $  0 010 = 51     FIND STEP
+G014E735          002 * 71 010 E 16     ERROR IF CAN'T
+G014E740     * 71 020 $  0 010 = 56     ERASE STEP A/C H21-26.
+G014E745          010 X  5              EXIT
+G014E750     * 75 020 $  0 010 = 21     EVALUATE FORM NUMBER
+G014E755          020 $  0 010 = 46     VALIDATE FORM NUMBER
+G014E760          020 $  0 010 * 50     VERIFY TERMINAL
+G014E765          020 Q  3 050 P 22
+G014E770          020 $  0 010 = 12     POP Q3
+G014E775          020 $  0 010 = 52     FIND FORM
+G014E780          002 * 76 010 E 19     ERROR IF CAN'T
+G014E781     * 76 020 $  0 010 = 57     ERASE FORM A/C H24-H26.
+G014E782          010 X  5
+G014E785     * 90                       LOCAL STORAGE
+G014E790     * 91                       LOCAL STORAGE
+H---E000+    H  0                       LAST 16 BIT CLOCK READING
+H---E001     H  1+     1080000   39     TEMPORARY INITIAL TIME
+H---E002     H  2 000,4021,300,1401     TEMPORARY DATE
+H---E003     H  3 026,0100,070,0000     TEMPORARY DATE
+H---E004     H  4 100 0000 000 0000     STN DUE FOR Q MSG
+H---E005     H  5                       NEXT DECK NUMBER
+H---E006     H  6                       NEXT STATISTICAL CARD NUMBER
+H---E007     H  7     ----     ----     STN IN CORE
+H---E008     H  8                       START TIME OF CURRENT SLOT
+H---E009     H  9                       SCR CONTENTS
+H---E010     H 10        0        0     NEXT AVAILABLE BUFFER
+H---E011     H 11        0        0     NEXT AVAILABLE DRUM
+H---E012     H 12     ----     ----     STN
+H---E013     H 13     ----     ----     BUFFER
+H---E014     H 14     ----     ----     DRUM
+H---E015     H 15 100 0000 000 0000     += 'OF' DELAYED A/C READING
+H---E016     H 16 100 0000 000 0000     += 'OF' DELAYED A/C PUNCHING
+H---E017     H 17
+H---E018     H 18
+H---E019     H 19                       ACCUMULATED CHARACTERS RESULT OF '27
+H---E020     H 20                       INTEGER FOR OUTPUT
+H---E021     H 21                       SEARCH POINTER
+H---E022     H 22                       SEARCH POINTER
+H---E023     H 23                       SEARCH POINTER
+H---E024     H 24                       SEARCH POINTER
+H---E025     H 25                       SEARCH POINTER
+H---E026     H 26                       SEARCH POINTER
+I---E000+    I  0                 0     SMALL INTEGERS
+I---E001     I  1                 1
+I---E002     I  2                 2
