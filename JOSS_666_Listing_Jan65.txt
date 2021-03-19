@@ -976,3 +976,40 @@ D006E780          071   40 044 N  8
 D006E785          050 * 90 060 H 20
 D006E790          020 $  0 010 = 36     CONVERT WHOLE NUMBER OF COEF
 D006E795                 1        1
+
+D006E797          023 * 90 002 * 79     JUMP IF NO FRACTIONAL PART
+D006E800          020 A 27 050 P 11     INSERT DECIMAL PT
+D006E805          020 $  0 010 = 66
+D006E810          020 * 90 050 H 20
+D006E815          020 $  0 010 = 36     CONVERT FRACTION OF COEF
+D006E820                 4        8
+D006E825     * 79 020 $  0 010 = 64     INSERT .10*
+D006E830              * 95     * 95
+D006E835          020 * 91 006 * 77     JUMP IF SFX PLUS
+D006E840          020 A 73 050 P 11     INSERT (
+D006E845          020 $  0 010 = 66
+D006E850          020 A 44 050 P 11     INSERT -
+D006E855          020 $  0 010 = 66
+D006E860     * 77 021 * 91 050 H 20
+D006E865          020 $  0 010 = 36     CONVERT SFX
+D006E870                 1        2
+D006E875          020 * 91 002 * 78     JUMP IF SFX PLUS
+D006E880          020 A112 050 P 11     INSERT )
+D006E885          020 $  0 010 = 66
+D006E890     * 78 020 A 42 050 P 11     INSERT CR+EOM
+D006E895          020 $  0 010 = 66
+D006E900          010 P 26              EXIT VIA P26
+D006E902     * 81 020 $  0 010 = 17     POP Q6-Q7
+D006E904     * 80 020 Q  6 002 * 81     JUMP IF Q6 HAS SOMETHING
+D006E906          020 H 12 024 K 32     FAKE AN 'RI'
+D006E908          050 H  9 010 X 10       IN H9 AND JUMP
+D006E910     * 90                       LOCAL STORAGE
+D006E915     * 91                       LOCAL STORAGE
+D006E920     * 92+          10   27
+D006E925     * 93     S 50     S 50
+D006E930     * 94 007,0160,340,7016     EIGHT SPACE MSG
+D006E935          007,0160,350,0000
+D006E940     * 95 020,0011,407,6200     .10*
+D006E945     * 96     S 17     S 17,
+D006E999        /     D006 010,7000/
+
