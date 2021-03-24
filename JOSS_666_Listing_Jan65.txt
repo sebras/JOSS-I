@@ -1338,3 +1338,6 @@ D008E970          020 $  0 010 = 61     CONVERT TIME
 D008E975          020 A 42 050 S  5
 D008E980          010 X 14              EXIT VIA X14
 D008E990     * 90                  ,    WORKING STORAGE
+
+D008E999        /     D008 010,7000/
+
